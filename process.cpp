@@ -1,6 +1,18 @@
 #include"process.h"
 
-void file(short status,short* player_highscore,short* theme)
+void comparision(short* player_score,short* player_highscore,short* challenger_highscore,bool* allow_to_save)
+{
+	if(*player_highscore <= *player_score && *allow_to_save == true)
+	{
+		*player_highscore = *player_score;
+	}
+	if(*challenger_highscore <= *player_score && *allow_to_save == false)
+	{
+		*challenger_highscore = *player_score;
+	}
+}
+
+void file(short status,short* player_highscore, short* challenger_highscore,short* theme)
 {
 	if(status==1)
 	{
@@ -9,8 +21,8 @@ void file(short status,short* player_highscore,short* theme)
 		if(gfile.is_open())
 		{
 			gfile << *theme<<" ";
-			gfile << *player_highscore;
-
+			gfile << *player_highscore<<" ";
+			gfile << *challenger_highscore<<" ";
 		}
 		gfile.close();
 	}
@@ -22,6 +34,7 @@ void file(short status,short* player_highscore,short* theme)
 		{
 			gfile >> *theme;
 			gfile >> *player_highscore;
+			gfile >> *challenger_highscore;
 		}
 		gfile.close();
 	}
@@ -81,4 +94,3 @@ void savegame(short starus,short* player_score, short arr_game_screen[11][11], s
 	}
 	gfile.close();
 }
-
