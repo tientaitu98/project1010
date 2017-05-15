@@ -3,7 +3,7 @@ void console(short arr_game_screen[11][11])
 {
 	short* i = new short;
 	short* j = new short;
-	for( *i=0;*i<=11;(*i)++)	for( *j=0;*j<=11;(*j)++)	arr_game_screen[*i][*j]=-2;
+	for( *i=0;*i<=10;(*i)++)	for( *j=0;*j<=10;(*j)++)	arr_game_screen[*i][*j]=-2;
 	for( *i=1;*i<=10;(*i)++)	for( *j=1;*j<=10;(*j)++)	arr_game_screen[*i][*j]=0;
 	delete i;
 	delete j;
